@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flows"
+description = "Flow models sandbox"
+version = "0.0.1"
+authors = [
+    {name = "David Graff"},
+]
+readme = "README.md"
+license = {text = "MIT"}
+classifiers = [
+	"Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+keywords = []
+requires-python = ">=3.12"
+dependencies = [
+    "jaxtyping",
+    "lightning >= 2.0",
+    "numpy",
+    "pandas",
+    "rdkit",
+    "scikit-learn",
+    "scipy",
+    "torch >= 2.1",
+]
+
+[project.optional-dependencies]
+dev = ["black", "bumpversion", "flake8", "pytest", "pytest-cov"]
+docs = ["sphinx", "sphinx-autobuild", "sphinx-autoapi", "sphinxcontrib-bibtex", "sphinx-book-theme"]
+test = ["parameterized > 0.8", "pytest >= 6.2", "pytest-cov"]
+
+[tool.black]
+line-length = 100
+target-version = ["py312"]
+skip-magic-trailing-comma = true
+
+[tool.pytest.ini_options]
+addopts = "--cov diffusion_sandbox"
+markers = [
+    "long: marks tests as long (deselect with '-m \"not long\"')",
+]
